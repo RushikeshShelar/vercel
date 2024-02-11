@@ -1,0 +1,16 @@
+{
+  "name": "vercel-deployment-service",
+  "version": "1.0.0",
+  "description": "A Verel Like Service to Deploy an Project(React)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rushikesh Shelar",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.11.17",
+    "aws-sdk": "^2.1555.0",
+    "redis": "^4.6.13"
+  }
+}
