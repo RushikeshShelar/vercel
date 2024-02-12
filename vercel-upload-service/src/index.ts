@@ -10,7 +10,10 @@ import { createClient } from "redis";
 
 // initialise a Redis Publisher
 const publisher = createClient();
-publisher.connect()
+publisher.connect();
+
+const subscriber = createClient();
+subscriber.connect();
 
 const PORT = process.env.PORT || 3000;
 
@@ -34,8 +37,20 @@ app.post("/deploy", async (req, res) => {
 
     publisher.lPush("build-queue",id);
 
+    publisher.hSet("status", id, "uploaded");
+
+    const value = await publisher.hGet("status", id);
+
     res.json({
         id: id
+    });
+})
+
+app.get("/status", async (req, res) => {
+    const id = req.query.id;
+    const response = await subscriber.hGet("status", id as string);
+    res.json({
+        status: response
     });
 })
 
