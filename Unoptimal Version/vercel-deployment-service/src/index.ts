@@ -2,6 +2,14 @@
 import { createClient, commandOptions } from "redis";
 import { copyFinalDist, downloadS3Folder } from "./aws";
 import { buildProject } from "./utils";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+console.log(process.env.ACCESS_ID);
+console.log(process.env.SECRET_ACCESS_KEY);
+console.log(process.env.ENDPOINT);
+
 
 const subscriber = createClient();
 subscriber.connect();

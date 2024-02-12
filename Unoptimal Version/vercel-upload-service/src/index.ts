@@ -2,6 +2,9 @@ import express from "express";
 import cors from "cors";
 import simpleGit from "simple-git";
 import path from "path";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 import { generate } from "./utils";
 import { getAllFiles } from "./file";
